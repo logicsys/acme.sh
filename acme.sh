@@ -6,7 +6,7 @@ PROJECT_NAME="acme.sh"
 
 PROJECT_ENTRY="acme.sh"
 
-PROJECT="https://github.com/acmesh-official/$PROJECT_NAME"
+PROJECT="https://github.com/logicsys/$PROJECT_NAME"
 
 DEFAULT_INSTALL_HOME="$HOME/.$PROJECT_NAME"
 
@@ -1782,6 +1782,9 @@ _inithttp() {
     if _contains "$(curl --help 2>&1)" "--globoff"; then
       _ACME_CURL="$_ACME_CURL -g "
     fi
+
+    #Add extra args
+    _ACME_CURL="${_ACME_CURL}${ACME_CURL_EXTRA_ARGS}"
   fi
 
   if [ -z "$_ACME_WGET" ] && _exists "wget"; then
@@ -6655,7 +6658,7 @@ installOnline() {
 
   _branch="$BRANCH"
   if [ -z "$_branch" ]; then
-    _branch="master"
+    _branch="logicsys"
   fi
 
   target="$PROJECT/archive/$_branch.tar.gz"
